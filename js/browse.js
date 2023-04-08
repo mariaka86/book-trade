@@ -19,10 +19,10 @@ userDataObject;
  * The start point for this js file
  */
 function initializeBrowse(){
-    library = getLibrary();
-    renderLibrary(library);
-    userDataObject = new UserData();
-    currentUser = userDataObject.currentUser;
+  library = getLibrary();
+  renderLibrary(library);
+  userDataObject = new UserData();
+  currentUser = userDataObject.currentUser;
 }
 
 
@@ -104,20 +104,20 @@ function renderLibrary(set){
 }
 
 function addToShelf(event){
-    let text = event.path[1].childNodes[0].innerText;
-    if (currentUser === null) {
-      window.location = 'sign-in.html';
+  let text = event.path[1].childNodes[0].innerText;
+  if (currentUser === null) {
+    window.location = 'sign-in.html';
+  }
+  for (let i = 0; i < library.length; i++) {
+    const element = library[i];
+    if(element.title === text){
+      //ADD BOOK TO CART
+      currentUser.bookshelf.push(new Book(element.title,element.author,element.isbn,element.attributes,element.quantity));
+      updateUserShelf();
+      library.splice(i,1);
+      break;
     }
-    for (let i = 0; i < library.length; i++) {
-        const element = library[i];
-        if(element.title === text){
-            //ADD BOOK TO CART
-            currentUser.bookshelf.push(new Book(element.title,element.author,element.isbn,element.attributes,element.quantity));
-            updateUserShelf();
-            library.splice(i,1);
-            break;
-        }
-    }
+  }
 
   for (let i = 0; i < library.length; i++) {
     const element = library[i];
@@ -133,8 +133,8 @@ function addToShelf(event){
 }
 
 function updateUserShelf(){
-    userDataObject.allUsers[userDataObject.currentUser.index] = userDataObject.currentUser;
-    localStorage.setItem(userKey, JSON.stringify(userDataObject));
+  userDataObject.allUsers[userDataObject.currentUser.index] = userDataObject.currentUser;
+  localStorage.setItem(userKey, JSON.stringify(userDataObject));
 }
 
 /**

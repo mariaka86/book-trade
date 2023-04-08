@@ -49,16 +49,33 @@ function getBooksStorage(){
 function handleSubmit(){
   let titleValue = document.getElementById('booktitle').value;
   let authorValue = document.getElementById('author').value;
-  addBooksStorage(new Book(titleValue,authorValue)); 
+  addBooksStorage(new Book(titleValue,authorValue));
   userDataObject.allUsers[userDataObject.currentUser.index] = userDataObject.currentUser;
-  localStorage.setItem(userKey, JSON.stringify(userDataObject)); 
+  localStorage.setItem(userKey, JSON.stringify(userDataObject));
+  addUserTokens();
 }
 
 // adding tokens to user
 
 function addUserTokens(){
-userDataObject.currentUser.tokens++;
- console.log ('addUserTokens',tokens);
-  handleSubmit();
+  console.log(userDataObject);
+  let shelfKey = JSON.parse(localStorage.getItem('userKey'));
+  let getEmptyShelf = userDataObject.currentUser.bookshelf;
+
+  console.log(getEmptyShelf);
+  let addedBooksByUser= {
+    title: document.getElementById('booktitle').value,
+    author: document.getElementById('author').value,
+  };
+  console.log(addedBooksByUser);
+  getEmptyShelf.push(addedBooksByUser);
+
+  localStorage.setItem('userKey', JSON.stringify(shelfKey));
+
+
+
+  // userDataObject.currentUser.tokens++;
+  //  console.log ('addUserTokens',tokens);
+  // handleSubmit();
 
 }

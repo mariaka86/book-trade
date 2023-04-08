@@ -2,13 +2,18 @@
     box-sizing: border-box;
   }
 
-  #token {
+  button{
+    margin:0.5rem;
+  }
 
+
+
+  #token {
   width: 360px;
   height: 140px;
   margin: auto;
   float: left;  
-  padding-left: 6px;
+  padding-right: 10%;
   
   }
 
@@ -16,11 +21,19 @@
     padding-left:60px;
     font-size: large;
     border: solid #443730 5px;
+    margin-bottom:12%;
     
   }
   fieldset input[type="text"]{
     width:300px;
     margin: 0.5rem;
 
+  }
+
+  footer{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 7.5rem;   
   }
  
