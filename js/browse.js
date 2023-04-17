@@ -157,7 +157,7 @@ function fillStockForTesting(){
         'Rodrigo Quian Quiroga', NaN, ['Psychology','Neuroscience']),
       new Book('Negative Space','B.R. Yeager', NaN, ['Fiction']),
       new Book('The Man in the High Castle','Philip K. Dick', NaN, ['Fiction']),
-      new Book('The Man in the High Castle','Philip K. Dick', NaN, ['Fiction'])
+      new Book('Twilight','Stephanie Meyer', NaN, ['Fiction'])
     ];
 
     localStorage.setItem(libraryKey, JSON.stringify(set));

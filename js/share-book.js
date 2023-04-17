@@ -60,21 +60,29 @@ function updateUserShelf(){
   let shelfKey = JSON.parse(localStorage.getItem('userKey'));
   let getEmptyShelf = userDataObject.currentUser.bookshelf;
   let userTokens = userDataObject.currentUser.tokens;
-  console.log(userTokens);
-  let addedBooksByUser= {
+
+  let addedBookByUser= {
     title: document.getElementById('booktitle').value,
     author: document.getElementById('author').value,
   };
-  console.log(addedBooksByUser);
-  getEmptyShelf.push(addedBooksByUser);
+
+  getEmptyShelf.push(addedBookByUser);
   let bookCount = getEmptyShelf.length;
   console.log(bookCount);
-  if (bookCount > 0){
-    userTokens += bookCount ++;
-  }
-  console.log(userTokens);
-  localStorage.setItem('userKey', JSON.stringify(shelfKey));
 
+  if (bookCount > 0 ){
+    getEmptyShelf.forEach(book=>{
+      userTokens++;
+    });
+    console.log(userTokens);
+
+
+    let displayTokens = userTokens;
+
+    document.getElementById('demo').innerHTML= displayTokens;
+
+  }
+  // localStorage.setItem();
 }
 
 
